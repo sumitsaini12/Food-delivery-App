@@ -1,12 +1,13 @@
 import React from 'react'
+import Header from './components/Header'
 
 
 function App() {
 
 
   return (
-    <div className="text-4xl text-center">
-      Food delivery App
+    <div>
+      <Header />
     </div>
   )
 }
