@@ -1,10 +1,23 @@
 import React from "react";
 import { MdShoppingBasket } from "react-icons/md";
 import { motion } from "framer-motion";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { app } from "../firebase.config";
 import Logo from "../Img/logo.png";
 import Avatar from "../Img/avatar.png";
+import { MdLogOut } from "react-icons/md";
 
 function Header() {
+
+    // const firebaseAuth = getAuth(app);
+    // const provider = new GoogleAuthProvider();
+
+     const login = async () => {
+    //     const response = await signInWithPopup(firebaseAuth, provider);
+    //     console.log(response);
+     };
+
+    const [isMenu, setISMenu] = useState(false);
 
 
     return (
@@ -32,7 +45,16 @@ function Header() {
                         </div>
                     </div>
                     <div className="relative">
-                        <motion.img whileTap={{ scale: 0.6 }} src={Avatar} className="w-10 min-w-[40px] h-8 min-h-[40px] drop-shadow-xl cursor-pointer" alt="Login Img..." />
+                        <motion.img whileTap={{ scale: 0.6 }} src={Avatar} className="w-10 min-w-[40px] h-8 min-h-[40px] drop-shadow-xl cursor-pointer" alt="Login Img..." onClick={login} />
+                        {
+                            isMenu && (
+                                <div className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0">
+                                    <p className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base"> New Item</p>
+
+                                    <p className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base">Logout <MdLogOut /></p>
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
 
@@ -47,4 +69,6 @@ function Header() {
 }
 
 export default Header;
+
+
 
